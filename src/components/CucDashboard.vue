@@ -19,6 +19,11 @@
         <l-popup>
           <div @click="innerClick(marker)">
             <img :src="marker.photo_url" width="150px" height="110px"/>
+
+            <div class="map__window"><h2>Absolonova x Hlavní</h2>
+              <h3>Papír</h3>Objem: 1100<br>Počet: 2<br>Svoz: pondělí, čtvrtek, sobota<br>Četnost: 3x týdně<br>
+              <h3>Plast</h3>Objem: 1100<br>Počet: 2<br>Svoz: úterý, středa, pátek, neděle<br>Četnost: 4x týdně<br>
+            </div>
           </div>
         </l-popup>
       </l-marker>
@@ -93,7 +98,7 @@ export default {
   },
   async created() {
     this.loading = true;
-    const baseUrl = 'https://cowardly-starfish-32.loca.lt';
+    const baseUrl = 'http://7a11-62-44-1-203.ngrok.io';
     const response = await fetch(`${baseUrl}/trash_cans`)
     const data = await response.json();
     this.allMarkers = data.map(marker => {
