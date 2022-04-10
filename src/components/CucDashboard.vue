@@ -17,8 +17,8 @@
           :lat-lng="marker.location"
           :icon="getIcon(marker)">
         <l-popup>
-          <div @click="innerClick">
-            I am a popup
+          <div @click="innerClick(marker)">
+            <img :src="marker.photo_url" width="150px" height="110px"/>
           </div>
         </l-popup>
       </l-marker>
@@ -86,26 +86,21 @@ export default {
         })
       }
     },
-    getPopup(marker) {
-      return L.popup({
-        closeButton: false,
-        closeOnClick: false,
-        content: "<div>code:" + marker.code + "</div><div>nom: " + marker.nom + "</div>"
-      });
-    },
-    innerClick() {
-      alert("Click!");
+    innerClick(marker) {
+      alert("Click! " + marker.code);
       return false;
     },
   },
   async created() {
     this.loading = true;
-    const response = await fetch("https://dull-donkey-90.loca.lt/trash_cans")
+    const baseUrl = 'https://cowardly-starfish-32.loca.lt';
+    const response = await fetch(`${baseUrl}/trash_cans`)
     const data = await response.json();
     this.allMarkers = data.map(marker => {
       return {
         location: latLng(marker.lat, marker.long),
         is_full: marker.is_full,
+        photo_url: marker.photo_url,
       }
     });
     this.loading = false;
