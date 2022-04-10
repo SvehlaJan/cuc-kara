@@ -2,7 +2,6 @@
   <div>
     <div class="row">
       <h1 class="column">ČUČ-KÁRA</h1>
-      <!--      <img class="column" src="/images/car.jpg" alt="logo" width="50" height="100px"/>-->
     </div>
     <l-map
         :zoom="zoom"
@@ -79,13 +78,13 @@ export default {
     getIcon(marker) {
       if (marker.is_full) {
         return L.icon({
-          iconUrl: '/images/marker_red.png',
+          iconUrl: '/cuc-kara/images/marker_red.png',
           iconSize: [42, 42],
           iconAnchor: [21, 42]
         })
       } else {
         return L.icon({
-          iconUrl: '/images/marker_green.png',
+          iconUrl: '/cuc-kara/images/marker_green.png',
           iconSize: [32, 32],
           iconAnchor: [16, 32]
         })
@@ -98,7 +97,7 @@ export default {
   },
   async created() {
     this.loading = true;
-    const baseUrl = 'https://7a11-62-44-1-203.ngrok.io';
+    const baseUrl = 'https://cuckara-classifier.azurewebsites.net/api/v1';
     const response = await fetch(`${baseUrl}/trash_cans`)
     const data = await response.json();
     this.allMarkers = data.map(marker => {
