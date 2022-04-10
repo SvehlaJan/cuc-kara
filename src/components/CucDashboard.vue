@@ -92,13 +92,13 @@ export default {
       }
     },
     innerClick(marker) {
-      alert("Click! " + marker.code);
+      alert("Click! " + marker.photo_url);
       return false;
     },
   },
   async created() {
     this.loading = true;
-    const baseUrl = 'http://7a11-62-44-1-203.ngrok.io';
+    const baseUrl = 'https://7a11-62-44-1-203.ngrok.io';
     const response = await fetch(`${baseUrl}/trash_cans`)
     const data = await response.json();
     this.allMarkers = data.map(marker => {
