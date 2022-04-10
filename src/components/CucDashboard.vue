@@ -18,9 +18,9 @@
           :icon="getIcon(marker)">
         <l-popup>
           <div @click="innerClick(marker)">
-            <img :src="marker.photo_url" width="150px" height="110px"/>
+            <img :src="marker.photo_url" width="200px" height="150px"/>
 
-            <div class="map__window"><h2>Absolonova x Hlavní</h2>
+            <div class="map__window"><h2>Vídeňská 77</h2>
               <h3>Papír</h3>Objem: 1100<br>Počet: 2<br>Svoz: pondělí, čtvrtek, sobota<br>Četnost: 3x týdně<br>
               <h3>Plast</h3>Objem: 1100<br>Počet: 2<br>Svoz: úterý, středa, pátek, neděle<br>Četnost: 4x týdně<br>
             </div>
